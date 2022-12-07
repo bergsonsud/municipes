@@ -65,3 +65,6 @@ RSpec/NestedGroups:
 
 RSpec/MultipleMemoizedHelpers:
   Enabled: false
+
+Layout/HeredocIndentation:
+  Enabled: false
