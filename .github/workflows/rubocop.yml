@@ -1,0 +1,17 @@
+name: CI
+on: push
+jobs:
+  rubocop:
+    name: Rubocop
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Analyze code
+        run: bundle exec rubocop
