@@ -1,4 +1,4 @@
-name: CI
+name: CI Rspec
 on: push
 jobs:
   rspec:

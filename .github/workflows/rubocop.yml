@@ -1,4 +1,4 @@
-name: CI
+name: CI Rubocop
 on: push
 jobs:
   rubocop:
