@@ -30,5 +30,38 @@ AllCops:
     - "app/controllers/*"
     - "vendor/**/*.rb"
     - "gemfiles/vendor/bundle/**/*"
+
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/LineLength:
+  Max: 120
+
 Style/Documentation:
+  Enabled: false
+
+Naming/VariableNumber:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 20
+  Exclude:
+    - spec/**/*
+
+RSpec/NestedGroups:
+  Max: 10
+
+RSpec/MultipleMemoizedHelpers:
   Enabled: false
