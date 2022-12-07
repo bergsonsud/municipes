@@ -80,6 +80,7 @@ group :test do
   gem "rubocop", require: false
   gem "rubocop-rails"
   gem "rubocop-rspec"
+  gem 'rubocop-discourse'
   gem "shoulda-matchers"
   gem 'database_cleaner'
 end
