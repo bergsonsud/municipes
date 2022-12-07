@@ -28,5 +28,7 @@ AllCops:
     - "spec/rails_helper.rb"
     - "app/views/**/*.jbuilder"
     - "app/controllers/*"
+    - "vendor/**/*.rb"
+    - "gemfiles/vendor/bundle/**/*"
 Style/Documentation:
   Enabled: false
