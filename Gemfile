@@ -76,10 +76,10 @@ group :test do
   gem "webdrivers"
   gem 'faker'
   gem "factory_bot_rails"
-  gem "rspec-rails"
-  gem "rubocop", require: false
-  gem "rubocop-rails"
-  gem "rubocop-rspec"
+  gem 'rspec-rails', '~> 5.1.2'
+  gem 'rubocop', '~> 1.36'
+  gem 'rubocop-rails', '~> 2.16', '>= 2.16.1'
+  gem 'rubocop-rspec', '~> 2.13', '>= 2.13.2'
   gem 'rubocop-discourse'
   gem "shoulda-matchers"
   gem 'database_cleaner'
