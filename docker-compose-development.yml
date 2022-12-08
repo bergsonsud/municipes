@@ -1,4 +1,4 @@
-version: '3'
+version: '3.4'
 
 services:
   app:
@@ -11,29 +11,30 @@ services:
       - postgres
     volumes:
       - .:/app
-#    env_file: .env
+    env_file: .env
     environment:
       RAILS_ENV: development
       DB_HOST: postgres
       DB_USERNAME: postgres
       DB_PASSWORD: changeme
+      REMOTE_DATABASE_URL: postgres://postgres:changeme@postgres:5432/municipes_
 
   postgres:
     image: postgres:14
+    env_file: .env
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
-      PGDATA: /data/postgres
+      POSTGRES_HOST_AUTH_METHOD: trust
     volumes:
-      - ./postgres:/varlib/postgresql/data
+      - ./postgres:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-    restart: unless-stopped
-
+    restart: always
 volumes:
   app:
   postgres:
 
 networks:
   municipes-local:
-    driver: brigde
+    external: true
