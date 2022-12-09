@@ -1,7 +1,6 @@
 name: CI Rspec
 on:
   - pull_request
-  - push
 jobs:
   rspec:
     name: RSpec
