@@ -1,11 +1,10 @@
-# .rubocop.yml
 require:
   - rubocop-rails
   - rubocop-rspec
 
 AllCops:
-  NewCops: enable
   TargetRubyVersion: 3.0.3
+  NewCops: enable
   Exclude:
     - "db/**/*"
     - "Gemfile"
@@ -30,6 +29,13 @@ AllCops:
     - "app/controllers/*"
     - "vendor/**/*.rb"
     - "gemfiles/vendor/bundle/**/*"
+
+Metrics/BlockLength:
+  Enabled: false
+  AllowedMethods:
+    - describe
+    - context
+    - it
 
 Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
@@ -64,7 +70,4 @@ RSpec/NestedGroups:
   Max: 10
 
 RSpec/MultipleMemoizedHelpers:
-  Enabled: false
-
-Layout/HeredocIndentation:
   Enabled: false
