@@ -9,8 +9,11 @@ services:
       - "3000:3000"
     depends_on:
       - postgres
+      - redis
     volumes:
       - .:/app
+    tmpfs:
+      - /tmp/pids/
     env_file: .env
     environment:
       RAILS_ENV: development
@@ -18,6 +21,7 @@ services:
       DB_USERNAME: postgres
       DB_PASSWORD: changeme
       REMOTE_DATABASE_URL: postgres://postgres:changeme@postgres:5432/municipes_
+      PIDFILE: /tmp/pids/server.pid
 
   postgres:
     image: postgres:14
@@ -31,9 +35,23 @@ services:
     ports:
       - "5432:5432"
     restart: always
+  redis:
+    image: redis:5.0.7
+    container_name: redis-municipes
+  sidekiq:
+    build:
+      context: .
+      dockerfile: development.Dockerfile
+    command: sleep infinity
+    volumes:
+      - .:/app
+    env_file: .env
+    environment:
+      RAILS_ENV: development
 volumes:
   app:
   postgres:
+  redis-data:
 
 networks:
   municipes-local:
