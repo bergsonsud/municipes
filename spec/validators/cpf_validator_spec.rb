@@ -1,6 +1,7 @@
 # frozen_string_literal: true
+
 require 'active_model'
-require "cpf_cnpj"
+require 'cpf_cnpj'
 require File.expand_path('app/validators/cpf_validator')
 
 class CpfValidatable

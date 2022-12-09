@@ -1,6 +1,7 @@
 # frozen_string_literal: true
+
 require 'active_model'
-require "active_support/all"
+require 'active_support/all'
 require File.expand_path('app/validators/date_future_validator')
 
 class DateFutureValidatable

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'active_model'
 require File.expand_path('app/models/cns')
 require File.expand_path('app/validators/cns_validator')
