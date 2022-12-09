@@ -35,3 +35,11 @@
 .idea/
 
 postgres
+
+node_modules/*
+
+/public/packs
+/public/packs-test
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
