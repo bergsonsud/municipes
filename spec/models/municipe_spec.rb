@@ -3,10 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe Municipe do
-  describe "relations" do
-    it { should have_one(:address).dependent(:destroy) }
-    it { should accept_nested_attributes_for :address }
-    it { should have_one_attached(:picture) }
+  Municipe.skip_callback(:after_create)
+
+  describe 'relations' do
+    it { is_expected.to have_one(:address).dependent(:destroy) }
+    it { is_expected.to accept_nested_attributes_for :address }
+    it { is_expected.to have_one_attached(:picture) }
   end
 
   describe 'validations' do
