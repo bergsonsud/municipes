@@ -17,7 +17,7 @@ class Municipe < ApplicationRecord
   after_create :notify
 
   def notify
-    EmailNotifyWorker.perform_async(ENV.fetch('EMAIL_TO', nil))
-    SmsNotifyWorker.perform_async(ENV.fetch('TWILLO_TO', nil), 'Municipe Criado!')
+    EmailNotifyWorker.perform_async(ENV['EMAIL_TO'])
+    SmsNotifyWorker.perform_async(ENV['TWILLO_TO'], 'Municipe Criado!')
   end
 end
