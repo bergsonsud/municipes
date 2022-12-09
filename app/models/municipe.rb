@@ -13,4 +13,11 @@ class Municipe < ApplicationRecord
 
   has_one :address, dependent: :destroy
   accepts_nested_attributes_for :address
+
+  after_create :notify
+
+  def notify
+    EmailNotifyWorker.perform_async(ENV.fetch('EMAIL_TO', nil))
+    SmsNotifyWorker.perform_async(ENV.fetch('TWILLO_TO', nil), 'Municipe Criado!')
+  end
 end
