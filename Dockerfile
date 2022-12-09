@@ -93,8 +93,6 @@ COPY --from=gems /usr/local/bundle /usr/local/bundle
 # Deploy your application
 COPY . .
 
-RUN bundle exec rails assets:precompile
-
 # Adjust binstubs to run on Linux and set current working directory
 RUN chmod +x /app/bin/* && \
     sed -i 's/ruby.exe\r*/ruby/' /app/bin/* && \
