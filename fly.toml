@@ -1,6 +1,6 @@
-# fly.toml file generated for bold-cherry-5339 on 2022-12-09T09:43:16-03:00
+# fly.toml file generated for nameless-wildflower-9670 on 2022-12-09T10:50:20-03:00
 
-app = "bold-cherry-5339"
+app = "nameless-wildflower-9670"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
@@ -9,7 +9,6 @@ processes = []
   [build.args]
     BUILD_COMMAND = "bin/rails fly:build"
     SERVER_COMMAND = "bin/rails fly:server"
-    RUBY_VERSION = "3.0.3"
 
 [deploy]
   release_command = "bin/rails fly:release"
