@@ -48,6 +48,12 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 gem "foreman"
+gem "image_processing", ">= 1.2"
+gem "cpf_validation"
+gem "cpf_cnpj"
+gem 'date_validator'
+gem 'sidekiq', '~>6.0.0'
+gem 'twilio-ruby'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -57,6 +63,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "letter_opener"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
@@ -70,4 +77,13 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'faker'
+  gem "factory_bot_rails"
+  gem 'rspec-rails', '~> 5.1.2'
+  gem 'rubocop', '~> 1.36'
+  gem 'rubocop-rails', '~> 2.16', '>= 2.16.1'
+  gem 'rubocop-rspec', '~> 2.13', '>= 2.13.2'
+  gem 'rubocop-discourse'
+  gem "shoulda-matchers"
+  gem 'database_cleaner'
 end

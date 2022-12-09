@@ -1,0 +1,73 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 3.0.3
+  NewCops: enable
+  Exclude:
+    - "db/**/*"
+    - "Gemfile"
+    - "lib/tasks/*.rake"
+    - "bin/*"
+    - "config/puma.rb"
+    - "config/spring.rb"
+    - "config/environments/development.rb"
+    - "config/environments/production.rb"
+    - "spec/spec_helper.rb"
+    - "test/**/*"
+    - "config.ru"
+    - "config/application.rb"
+    - "config/boot.rb"
+    - "config/importmap.rb"
+    - "config/environment.rb"
+    - "config/environments/*"
+    - "config/initializers/*"
+    - "config/route.rb"
+    - "spec/rails_helper.rb"
+    - "app/views/**/*.jbuilder"
+    - "app/controllers/*"
+    - "vendor/**/*.rb"
+    - "gemfiles/vendor/bundle/**/*"
+
+Metrics/BlockLength:
+  Enabled: false
+  AllowedMethods:
+    - describe
+    - context
+    - it
+
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/LineLength:
+  Max: 120
+
+Style/Documentation:
+  Enabled: false
+
+Naming/VariableNumber:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 20
+  Exclude:
+    - spec/**/*
+
+RSpec/NestedGroups:
+  Max: 10
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false

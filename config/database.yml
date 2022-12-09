@@ -20,13 +20,11 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: <%=ENV['DB_HOST']%>
-  username: <%=ENV['DB_USERNAME']%>
-  password: <%=ENV['DB_PASSWORD']%>
+
 
 development:
   <<: *default
-  database: municipes_development
+  url: <%= ENV['DATABASE_URL']%>_development
 
 
   # The specified database role being used to connect to postgres.
@@ -60,7 +58,12 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: localhost
+  username: postgres
+  password: changeme
   database: municipes_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
