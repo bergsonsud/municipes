@@ -1,6 +1,9 @@
-Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+# frozen_string_literal: true
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+require 'sidekiq/web'
+
+Rails.application.routes.draw do
+  mount Sidekiq::Web => '/sidekiq'
+  get '/healthcheck', to: ->(_env) { [200, { 'Content-Type' => 'text/plain' }, %w[ok]] }
+  resources :municipes, except: [:destroy]
 end
