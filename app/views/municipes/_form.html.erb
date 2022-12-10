@@ -1,0 +1,105 @@
+<div class="section" style="width: 1200px;">
+  <div class="container">
+    <div class="content is-medium is-narrow">
+      <%= simple_form_for municipe, html: { class: "form" } do |f| %>
+        <br>
+        <h1>Municipe</h1>
+
+      <%= image_tag f.object.picture, size: '100' if f.object.picture.present? %>
+
+        <div class="field is-horizontal">
+          <div class="field-body">
+            <div class="field">
+              <%= f.label 'Nome', class: 'label' %>
+              <div class="control" >
+                <%= f.text_field :name, class: 'input' %>
+                <%= f.error :name, class: "tag is-danger is-light" %>
+              </div>
+            </div>
+
+            <div class="field">
+              <%= f.label 'CPF', class: 'label' %>
+              <div class="control">
+                <%= f.text_field :cpf, class: 'input'%>
+                <%= f.error :cpf, class: "tag is-danger is-light" %>
+              </div>
+            </div>
+            <div class="field">
+              <%= f.label 'CNS', class: 'label' %>
+              <div class="control">
+                <%= f.text_field :cns, class: 'input' %>
+                <%= f.error :cns, class: "tag is-danger is-light" %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-body">
+            <div class="field">
+              <%= f.label 'Data de Nascimento', class: 'label' %>
+              <div class="control">
+                <%= f.date_field :birthdate, class: 'input' %>
+                <%= f.error :birthdate, class: "tag is-danger is-light" %>
+              </div>
+            </div>
+            <div class="field">
+              <%= f.label 'E-mail', class: 'label' %>
+              <div class="control">
+                <%= f.text_field :email, class: 'input' %>
+                <%= f.error :email, class: "tag is-danger is-light" %>
+              </div>
+            </div>
+            <div class="field">
+              <%= f.label 'Telefone', class: 'label' %>
+              <div class="control">
+                <%= f.text_field :phone, class: 'input' %>
+                <%= f.error :phone, class: "tag is-danger is-light" %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="field is-horizontal">
+          <div class="field-body">
+            <div class="field">
+              <%= f.label 'Foto', class: 'label' %>
+              <div class="control">
+                <%= f.input :picture, as: :file, class: 'input', label: false, required: false %>
+                <%= f.error :picture, class: "tag is-danger is-light" %>
+              </div>
+            </div>
+            <div class="field">
+              <%= f.label 'Ativo', class: 'label' %>
+              <div class="control">
+                <%= f.input :status, as: :boolean, class: 'input', label: false, required: false %>
+                <%= f.error :status, class: "tag is-danger is-light" %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <br>
+        <h1>Endereço</h1>
+
+        <%= f.fields_for :address do |address_form| %>
+          <%= render 'address', f: address_form %>
+        <% end %>
+
+        <div class="actions">
+          <%= f.submit 'Salvar', class: "button is-link" %>
+          <%= link_to 'Cancelar', municipes_path, class: "button" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('#municipe_cpf').mask('000.000.000-00');
+        $('#municipe_phone').mask('+55(00)000000000');
+    });
+</script>

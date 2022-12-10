@@ -1,0 +1,70 @@
+<br>
+<div id="address" data-controller="municipe">
+  <div class="field is-horizontal">
+    <div class="field-body">
+      <div class="field" style="width: 35px">
+        <%= f.label 'CEP', class: 'label' %>
+        <div class="control">
+          <%= f.text_field :zipcode, class: 'input', data: {action: "change->municipe#change_event" } %>
+          <%= f.error :zipcode, class: "tag is-danger is-light" %>
+        </div>
+      </div>
+
+      <div class="field" >
+        <%= f.label 'Logradouro', class: 'label' %>
+        <div class="control">
+          <%= f.text_field :street, class: 'input', data: { target: "municipe.street" } %>
+          <%= f.error :street, class: "tag is-danger is-light" %>
+        </div>
+      </div>
+      <div class="field">
+        <%= f.label 'Bairro', class: 'label' %>
+        <div class="control">
+          <%= f.text_field :neighborhood, class: 'input', data: { target: "municipe.neighborhood" } %>
+          <%= f.error :neighborhood, class: "tag is-danger is-light" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="field is-horizontal">
+    <div class="field-body">
+
+      <div class="field">
+        <%= f.label 'Cidade', class: 'label' %>
+        <div class="control">
+          <%= f.text_field :city, class: 'input', data: { target: "municipe.city" } %>
+          <%= f.error :city, class: "tag is-danger is-light" %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label 'UF', class: 'label' %>
+        <div class="control">
+          <%= f.text_field :uf, class: 'input', data: { target: "municipe.uf" } %>
+          <%= f.error :uf, class: "tag is-danger is-light" %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label 'Complemento', class: 'label' %>
+        <div class="control">
+          <%= f.text_field :complement, class: 'input', data: { target: "municipe.complement" } %>
+          <%= f.error :complement, class: "tag is-danger is-light" %>
+        </div>
+      </div>
+
+      <div class="field" style="width: 9%">
+        <%= f.label 'Código IBGE', class: 'label' %>
+        <div class="control">
+          <%= f.text_field :ibge_code, class: 'input', data: { target: "municipe.ibge" } %>
+          <%= f.error :ibge_code, class: "tag is-danger is-light" %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<br>
