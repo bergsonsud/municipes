@@ -1,0 +1,34 @@
+version: '3.4'
+
+services:
+  app-test:
+    env_file: .env.test
+    build:
+      context: .
+      dockerfile: test.Dockerfile
+    depends_on:
+      - postgres-test
+    volumes:
+      - .:/app
+    environment:
+      - RAILS_ENV=test
+  postgres-test:
+    container_name: postgres-test
+    image: postgres:14
+    env_file: .env.test
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - postgres-test:/var/lib/postgresql/data
+    ports:
+      - "5442:5432"
+    restart: always
+volumes:
+  app-test:
+  postgres-test:
+
+networks:
+  municipes-test-local:
+    external: true
