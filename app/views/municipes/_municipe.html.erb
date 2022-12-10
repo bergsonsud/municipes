@@ -1,0 +1,19 @@
+<%= turbo_frame_tag municipe do %>
+  <div class="municipe-card" >
+    <div class="card" style="width: 1200px; height: 230px">
+
+      <div class="card-content">
+        <h3><%= municipe.name %></h3>
+        <%= image_tag municipe.picture, size: '100' if municipe.picture.present? %>
+      </div>
+
+      <footer class="card-footer">
+        <p class="card-footer-item">
+      <span>
+        <%= link_to "Editar", edit_municipe_path(municipe), class: "mr2", data: { turbo_frame: dom_id(municipe) } %>
+      </span>
+        </p>
+      </footer>
+    </div>
+  </div><br>
+<% end %>

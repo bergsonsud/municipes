@@ -20,6 +20,6 @@ RSpec.describe DateFutureValidatable do
   it 'validates if birthdate is invalid' do
     subject.birthdate = Date.current + 2.days
     expect(subject.valid?).to be(false)
-    expect(subject.errors['birthdate']).to eq ['is invalid']
+    expect(subject.errors['birthdate']).to eq ['não é válido']
   end
 end

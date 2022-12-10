@@ -1,0 +1,14 @@
+<main class="container">
+  <div class="municipes-header">
+    <h1 class="title is-3">Municipes</h1>
+    <div><%= link_to "Novo municipe", new_municipe_path,class: "button is-success", data: { turbo_frame: "new_municipe" } %></div>
+  </div><br>
+  <div id="flash" class="flash">
+    <%= render "layouts/flash" %>
+  </div>
+
+  <%= turbo_frame_tag "new_municipe" %>
+  <div id="municipes">
+    <%= render @municipes %>
+  </div>
+</main>

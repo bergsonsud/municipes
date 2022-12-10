@@ -20,6 +20,6 @@ RSpec.describe CpfValidatable do
   it 'validates if cpf is invalid' do
     subject.cpf = '123.654.987-11'
     expect(subject.valid?).to be(false)
-    expect(subject.errors['cpf']).to eq ['is invalid']
+    expect(subject.errors['cpf']).to eq ['não é válido']
   end
 end

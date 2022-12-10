@@ -20,6 +20,6 @@ RSpec.describe CnsValidatable do
   it 'validates if cns is invalid' do
     subject.cns = '123987'
     expect(subject.valid?).to be(false)
-    expect(subject.errors['cns']).to eq ['is invalid']
+    expect(subject.errors['cns']).to eq ['não é válido']
   end
 end

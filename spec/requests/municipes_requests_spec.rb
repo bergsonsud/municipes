@@ -17,6 +17,21 @@ RSpec.describe 'Municipes', type: :request do
     end
   end
 
+  describe 'POST #create' do
+    let(:new_record_params) { { municipe: attributes_for(:municipe) } }
+
+    it 'responds with ok' do
+      post municipes_path, headers: headers_request, params: new_record_params
+      expect(response.status).to eq(201)
+    end
+
+    it 'add a new Municipe' do
+      expect do
+        post municipes_path, headers: headers_request, params: new_record_params
+      end.to change(Municipe, :count).by(1)
+    end
+  end
+
   describe 'GET show' do
     let!(:municipe) { create(:municipe) }
 

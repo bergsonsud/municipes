@@ -10,11 +10,11 @@ RUN apt-get update -qq && apt-get install -yq --no-install-recommends \
     libpq-dev \
     postgresql-client \
     libvips42 && \
-     curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
-        curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-        echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
-            apt-get update && apt-get install nodejs yarn \
-  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+    apt-get update && apt-get install nodejs yarn \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN yarn install
 
@@ -31,5 +31,4 @@ RUN bundle exec rake assets:precompile
 
 EXPOSE 3000
 
-#CMD ["sh"," ./entrypoints/docker-entrypoint.sh"]
 CMD ["sleep","infinity"]

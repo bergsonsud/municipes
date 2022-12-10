@@ -12,6 +12,7 @@ class MunicipesController < ApplicationController
   # GET /municipes/new
   def new
     @municipe = Municipe.new
+    @municipe.build_address
   end
 
   # GET /municipes/1/edit
@@ -23,8 +24,9 @@ class MunicipesController < ApplicationController
 
     respond_to do |format|
       if @municipe.save
-        format.html { redirect_to municipe_url(@municipe), notice: 'Municipe was successfully created.' }
+        format.html { redirect_to municipes_path, notice: 'Municipe was successfully created.' }
         format.json { render :show, status: :created, location: @municipe }
+        format.turbo_stream { flash.now[:notice] = 'Criado com sucesso!' }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @municipe.errors, status: :unprocessable_entity }
@@ -36,8 +38,9 @@ class MunicipesController < ApplicationController
   def update
     respond_to do |format|
       if @municipe.update(municipe_params)
-        format.html { redirect_to municipe_url(@municipe), notice: 'Municipe was successfully updated.' }
         format.json { render :show, status: :ok, location: @municipe }
+        format.html { redirect_to municipes_path, notice: 'Atualizado com sucesso', status: :ok }
+        format.turbo_stream { flash.now[:notice] = 'Atualizado com sucesso' }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @municipe.errors, status: :unprocessable_entity }
@@ -55,8 +58,6 @@ class MunicipesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def municipe_params
     params.require(:municipe).permit(:name, :cpf, :cns, :email, :birthdate, :phone, :status, :picture,
-                                     address_attributes: %i[id municipe_id name
-                                                            zipcode complement neighborhood
-                                                            city uf ibge_code])
+                                     address_attributes: %i[street zipcode complement neighborhood city uf ibge_code])
   end
 end

@@ -1,0 +1,5 @@
+<%= turbo_stream.remove @municipe %>
+<%= turbo_stream.prepend "municipes" do %>
+  <%= render @municipe %>
+<% end %>
+<%= render_turbo_stream_flash_messages %>
