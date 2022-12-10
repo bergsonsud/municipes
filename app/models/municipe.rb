@@ -17,7 +17,9 @@ class Municipe < ApplicationRecord
   after_create :notify
 
   def notify
-    EmailNotifyWorker.perform_async(ENV['EMAIL_TO'])
-    SmsNotifyWorker.perform_async(ENV['TWILLO_TO'], 'Municipe Criado!')
+    unless Rails.env.test?
+      EmailNotifyWorker.perform_async(email) if email.present?
+      SmsNotifyWorker.perform_async(ENV['TWILLO_TO'], 'Municipe Criado!')
+    end
   end
 end
