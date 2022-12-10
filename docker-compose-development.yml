@@ -10,6 +10,8 @@ services:
     depends_on:
       - postgres
       - redis
+    links:
+      - mailcatcher
     volumes:
       - .:/app
     tmpfs:
@@ -31,9 +33,9 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
       POSTGRES_HOST_AUTH_METHOD: trust
     volumes:
-      - ./postgres:/var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "5452:5432"
     restart: always
   redis:
     image: redis:5.0.7
@@ -48,10 +50,17 @@ services:
     env_file: .env
     environment:
       RAILS_ENV: development
+  mailcatcher:
+    image: yappabe/mailcatcher
+    ports:
+      - "1025:1025"
+      - "1080:1080"
 volumes:
   app:
-  postgres:
+  postgres-data:
   redis-data:
+  mailcatcher:
+  sidekiq:
 
 networks:
   municipes-local:
