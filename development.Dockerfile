@@ -31,5 +31,4 @@ RUN bundle exec rake assets:precompile
 
 EXPOSE 3000
 
-#CMD ["sh"," ./entrypoints/docker-entrypoint.sh"]
 CMD ["sleep","infinity"]
