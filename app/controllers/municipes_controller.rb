@@ -58,8 +58,6 @@ class MunicipesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def municipe_params
     params.require(:municipe).permit(:name, :cpf, :cns, :email, :birthdate, :phone, :status, :picture,
-                                     address_attributes: %i[id municipe_id street
-                                                            zipcode complement neighborhood
-                                                            city uf ibge_code])
+                                     address_attributes: %i[street zipcode complement neighborhood city uf ibge_code])
   end
 end
