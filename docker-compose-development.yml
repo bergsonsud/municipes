@@ -25,6 +25,7 @@ services:
       DB_PASSWORD: changeme
       PIDFILE: /tmp/pids/server.pid
       ELASTICSEARCH_URL: http://elasticsearch:9200
+      ELASTICSEARCH_HOST: elasticsearch:9200
       DATABASE_URL: postgres://postgres:changeme@postgres:5432/municipes
       REDIS_URL: redis://redis:6379/1
       SMTP_ADDRESS: smtp.municipes.org
