@@ -23,8 +23,20 @@ services:
       DB_HOST: postgres
       DB_USERNAME: postgres
       DB_PASSWORD: changeme
-      REMOTE_DATABASE_URL: postgres://postgres:changeme@postgres:5432/municipes_
       PIDFILE: /tmp/pids/server.pid
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+      DATABASE_URL: postgres://postgres:changeme@postgres:5432/municipes
+      REDIS_URL: redis://redis:6379/1
+      SMTP_ADDRESS: smtp.municipes.org
+      SMTP_PORT: 587
+      SMTP_DOMAIN: sandbox.municipes.org
+      SMTP_FROM: noreply@municipes.org
+      EMAIL_TO: bergsonsud@gmail.com
+      TWILIO_NUMBER: +18057497008
+      TWILIO_ACCOUNT_SID: AC6917fac3fc678cfaa61b09d14fc26965
+      TWILIO_AUTH_TOKEN: c07ddeff9d19a179bd038389811d623d
+      TWILLO_TO: +5585994171380
+
 
   postgres:
     image: postgres:14
