@@ -50,4 +50,7 @@ jobs:
           bundle exec rails db:migrate
 
       - name: Run tests
-        run: bundle exec rspec spec
+        run: |
+          sleep 60
+          curl -X GET http://elasticsearch:9200/
+          bundle exec rspec spec
