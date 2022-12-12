@@ -1,6 +1,8 @@
 # frozen_string_literal: true
-
 class Municipe < ApplicationRecord
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
   has_one_attached :picture
 
   validates :name, uniqueness: { scope: :cpf }
@@ -15,6 +17,25 @@ class Municipe < ApplicationRecord
   accepts_nested_attributes_for :address
 
   after_create :notify
+
+  def to_hash
+    @attributes
+  end
+
+  def self.search(query)
+    params = {
+      query: {
+        bool: {
+          should: [
+            { match: { name: query }},
+          ],
+        }
+      },
+    }
+
+    self.__elasticsearch__.search(params)
+  end
+
 
   def notify
     unless Rails.env.test?
