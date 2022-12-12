@@ -40,7 +40,7 @@ services:
 
   postgres:
     image: postgres:14
-    env_file: .env
+#    env_file: .env
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
@@ -60,7 +60,7 @@ services:
     command: sleep infinity
     volumes:
       - .:/app
-    env_file: .env
+#    env_file: .env
     environment:
       RAILS_ENV: development
   mailcatcher:
@@ -87,7 +87,7 @@ services:
       - 9200:9200
       - 9300:9300
     volumes:
-      - ./docker_data/elasticsearch/data:/usr/share/elasticsearch/data
+      - esdata:/usr/share/elasticsearch/data
 
   kibana:
     image: docker.elastic.co/kibana/kibana:7.7.0
