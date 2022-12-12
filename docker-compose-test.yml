@@ -12,7 +12,8 @@ services:
       - .:/app
     environment:
       - RAILS_ENV=test
-      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - ELASTICSEARCH_URL=http://elasticsearch-test:9200
+      - ELASTICSEARCH_HOST=elasticsearch-test:9200
     links:
       - elasticsearch-test
   postgres-test:
