@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 class Municipe < ApplicationRecord
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
+  include Searchable
 
   has_one_attached :picture
 
