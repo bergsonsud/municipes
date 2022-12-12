@@ -90,4 +90,5 @@ group :test do
   gem 'rubocop-discourse'
   gem "shoulda-matchers"
   gem 'database_cleaner'
+  gem 'elasticsearch-extensions'
 end

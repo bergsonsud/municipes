@@ -78,6 +78,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
+    ansi (1.5.0)
     ast (2.4.2)
     bindex (0.8.1)
     bootsnap (1.15.0)
@@ -119,6 +120,9 @@ GEM
       elasticsearch-transport (= 7.4.0)
     elasticsearch-api (7.4.0)
       multi_json
+    elasticsearch-extensions (0.0.33)
+      ansi
+      elasticsearch
     elasticsearch-transport (7.4.0)
       faraday
       multi_json
@@ -376,6 +380,7 @@ DEPENDENCIES
   date_validator
   debug
   elasticsearch
+  elasticsearch-extensions
   elasticsearch-model!
   elasticsearch-rails!
   factory_bot_rails
