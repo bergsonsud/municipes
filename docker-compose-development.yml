@@ -12,11 +12,12 @@ services:
       - redis
     links:
       - mailcatcher
+      - elasticsearch
+      - kibana
     volumes:
       - .:/app
     tmpfs:
       - /tmp/pids/
-    env_file: .env
     environment:
       RAILS_ENV: development
       DB_HOST: postgres
@@ -55,12 +56,43 @@ services:
     ports:
       - "1025:1025"
       - "1080:1080"
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.7.0
+    container_name: elasticsearch
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    cap_add:
+      - IPC_LOCK
+    ports:
+      - 9200:9200
+      - 9300:9300
+    volumes:
+      - ./docker_data/elasticsearch/data:/usr/share/elasticsearch/data
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.7.0
+    ports:
+      - "5601:5601"
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+    depends_on:
+      - elasticsearch
 volumes:
   app:
   postgres-data:
   redis-data:
   mailcatcher:
   sidekiq:
+  esdata:
+    driver: local
 
 networks:
   municipes-local:
