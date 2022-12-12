@@ -29,6 +29,10 @@ Cadastro para Municipes com registro de endereço, busca por CEP e inserção de
 ./rspec.sh
 ```
 
+### Links
 
+* Aplicação http://localhost:3000
+* Sidekiq http://localhost:3000/sidekiq
+* MailCatcher http://localhost:1080
 
 
