@@ -29,7 +29,7 @@ jobs:
       elasticsearch:
         image: elasticsearch:7.7.0
         ports:
-          - 9200/tcp
+          - 9200:9200
         options: -e="discovery.type=single-node" --health-cmd="curl http://localhost:9200/_cluster/health" --health-interval=10s --health-timeout=5s --health-retries=10
     steps:
       - name: Checkout code
