@@ -3,7 +3,7 @@ class MunicipesController < ApplicationController
 
   # GET /municipes or /municipes.json
   def index
-    if params[:query].present?
+    if Municipe.all.any? and params[:query].present?
       search_response = Municipe.search(params[:query])
       result_ids = search_response.results.map{|x| x.id}
       @municipes = Municipe.where(id: result_ids)
