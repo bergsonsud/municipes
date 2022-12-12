@@ -1,6 +1,17 @@
 <main class="container">
   <div class="municipes-header">
-    <h1 class="title is-3">Municipes</h1>
+    <h1 class="title is-3"><%=link_to 'Municipes', root_path %></h1>
+
+
+    <%= form_with(url: municipes_path, method: "GET") do |form| %>
+      <div class="field-body" style="width: 300px">
+        <div class="field">
+          <%= form.text_field :query, placeholder: 'Buscar por nome', class: 'input' %><br>
+          <%= form.submit 'Buscar', name: nil, class: "button is-success" %>
+        </div>
+      </div>
+    <% end %><br>
+
     <div><%= link_to "Novo municipe", new_municipe_path,class: "button is-success", data: { turbo_frame: "new_municipe" } %></div>
   </div><br>
   <div id="flash" class="flash">
