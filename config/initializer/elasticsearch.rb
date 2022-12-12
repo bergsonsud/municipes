@@ -1,1 +1,1 @@
-Elasticsearch::Model.client = Elasticsearch::Client.new(log: true, host: 'elasticsearch:9200')
+Elasticsearch::Model.client = Elasticsearch::Client.new(log: true, host: ENV['ELASTICSEARCH_HOST'])
