@@ -6,7 +6,7 @@ class Municipe < ApplicationRecord
   has_one_attached :picture
 
   validates :name, uniqueness: { scope: :cpf }
-  validates :name, :cpf, :cns, :email, :birthdate, :phone, :status, presence: true
+  validates :name, :cpf, :cns, :email, :birthdate, :phone, presence: true
   validates :cns, cns: true
   validates :cpf, cpf: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
