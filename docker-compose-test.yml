@@ -12,6 +12,10 @@ services:
       - .:/app
     environment:
       - RAILS_ENV=test
+      - ELASTICSEARCH_URL=http://elasticsearch-test:9200
+      - ELASTICSEARCH_HOST=elasticsearch-test:9200
+    links:
+      - elasticsearch-test
   postgres-test:
     container_name: postgres-test
     image: postgres:14
@@ -25,9 +29,32 @@ services:
     ports:
       - "5442:5432"
     restart: always
+  elasticsearch-test:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.7.0
+    container_name: elasticsearch-test
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    cap_add:
+      - IPC_LOCK
+    ports:
+      - 29200:9200
+      - 29300:9300
+    volumes:
+      - esdata-test:/usr/share/elasticsearch/data
+
+
 volumes:
   app-test:
   postgres-test:
+  esdata-test:
 
 networks:
   municipes-test-local:

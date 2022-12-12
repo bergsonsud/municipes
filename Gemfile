@@ -56,6 +56,9 @@ gem 'sidekiq', '~>6.0.0'
 gem 'twilio-ruby'
 gem "bulma-rails"
 gem 'simple_form'
+gem 'elasticsearch-model', git: 'https://github.com/elastic/elasticsearch-rails.git'
+gem 'elasticsearch-rails', git: 'https://github.com/elastic/elasticsearch-rails.git'
+gem 'elasticsearch'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -87,4 +90,5 @@ group :test do
   gem 'rubocop-discourse'
   gem "shoulda-matchers"
   gem 'database_cleaner'
+  gem 'elasticsearch-extensions'
 end

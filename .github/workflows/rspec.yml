@@ -11,6 +11,8 @@ jobs:
       REDIS_URL: redis://localhost:6379/0
       REDIS_HOST: redis
       REDIS_PORT: 6379
+      ELASTICSEARCH_URL: http://localhost:9200
+      ELASTICSEARCH_HOST: localhost:9200
     services:
       postgres:
         image: postgres:14-alpine
@@ -25,6 +27,11 @@ jobs:
         ports:
           - 6379:6379
         options: --health-cmd "redis-cli ping" --health-interval 10s --health-timeout 5s --health-retries 5 --entrypoint redis-server
+      elasticsearch:
+        image: elasticsearch:7.7.0
+        ports:
+          - 9200:9200
+        options: -e="discovery.type=single-node" --health-cmd="curl http://localhost:9200/_cluster/health" --health-interval=10s --health-timeout=5s --health-retries=10
     steps:
       - name: Checkout code
         uses: actions/checkout@v3

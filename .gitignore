@@ -43,3 +43,9 @@ node_modules/*
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+docker_data
+/docker_data
+docker_data/*
+es_data/*
+es_data
+/es_data

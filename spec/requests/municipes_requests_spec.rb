@@ -1,4 +1,6 @@
 require 'rails_helper'
+require 'rake'
+require 'elasticsearch/extensions/test/cluster/tasks'
 
 RSpec.describe 'Municipes', type: :request do
   describe 'GET index' do

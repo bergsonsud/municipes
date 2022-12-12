@@ -19,7 +19,6 @@ RSpec.describe Municipe do
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_presence_of(:birthdate) }
     it { is_expected.to validate_presence_of(:phone) }
-    it { is_expected.to validate_presence_of(:status) }
     it { is_expected.to validate_presence_of(:picture) }
     it { is_expected.to have_one_attached(:picture) }
 
