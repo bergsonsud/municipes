@@ -11,7 +11,8 @@ jobs:
       REDIS_URL: redis://localhost:6379/0
       REDIS_HOST: redis
       REDIS_PORT: 6379
-      ELASTICSEARCH_URL: http://elasticsearch:9200
+      ELASTICSEARCH_URL: http://localhost:9200
+      ELASTICSEARCH_HOST: localhost:9200
     services:
       postgres:
         image: postgres:14-alpine
@@ -50,7 +51,4 @@ jobs:
           bundle exec rails db:migrate
 
       - name: Run tests
-        run: |
-          sleep 60
-          curl -X GET http://elasticsearch:9200/
-          bundle exec rspec spec
+        run: bundle exec rspec spec
